@@ -1,6 +1,15 @@
+
+body {
+    margin: 0px;
+}
+
 .writeNewsTotalContainer {
     background-image: url("./Fondo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
     background-size: cover;
+    height: 100vh;
 }
 
 .writeNewsContainer {
@@ -16,8 +25,8 @@
     height: 80%;
     width: 100%;
     /*background-color: rgb(230, 237, 247);*/
-    background-image: url("./Cuaderno.png");
-    background-size: cover;
+    /*background-image: url("./Cuaderno.png");*/
+    /*background-size: cover;*/
 }
 
 .writeNewsForm {
@@ -60,39 +69,131 @@ form{
 }
 
 
- @media only screen and (min-width: 580px) {
+@media only screen and (min-width: 580px) {
     .writeNewsContainer {
         display: flex;
         flex-direction: column;
         max-width: 93vw;
         margin: auto;
     }
- }    
+}    
 
- @media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) {
     .writeNewsContainer {
         display: flex;
         flex-direction: column;
         max-width: 87vw;
+        height: 100vh;
         margin: auto;
     }
- }    
+}    
 
- @media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1100px) {
     .writeNewsContainer {
         display: flex;
         flex-direction: column;
         max-width: 77vw;
         margin: auto;
     }
- }    
+}    
 
- @media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     .writeNewsContainer {
         display: flex;
         flex-direction: column;
         max-width: 67vw;
         margin: auto;
     }
- }    
+}  
+
+
+@media only screen and (max-height: 750px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 120vh;
+    }
+} 
+
+@media only screen and (max-height: 600px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 150vh;
+    }
+} 
+
+@media only screen and (max-height: 480px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 180vh;
+    }
+} 
+
+@media only screen and (max-height: 400px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 210vh;
+    }
+} 
+
+@media only screen and (max-height: 345px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 240vh;
+    }
+} 
+
+@media only screen and (max-height: 300px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 270vh;
+    }
+}  
+
+@media only screen and (max-height: 268px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 300vh;
+    }
+} 
+
+@media only screen and (max-height: 240px) {
+    .writeNewsTotalContainer {
+        background-image: url("./Fondo.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        height: 330vh;
+    }
+}  
+
+
  
