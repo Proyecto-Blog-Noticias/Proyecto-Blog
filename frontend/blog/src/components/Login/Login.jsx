@@ -11,7 +11,7 @@ const blankLogin = {
 }
 
 
-export default function Login() {
+export default function Login({ setUserLogin }) {
 
     //const host = "http://localhost:4000/api/v0.0/users/login";
 
@@ -46,11 +46,11 @@ export default function Login() {
 	}
 
 
-	/**
+		/**
 	 *  JSON POST
 	 */
 	async function post(url, data) {
-		try{
+		try {
 			const response = await fetch(
 				url,
 				{
@@ -62,27 +62,30 @@ export default function Login() {
 				}
 			);
 			
-			console.log(response.status);
+			// 1. CHIVATO: Nos dirá exactamente qué número responde el servidor (200, 400, 401, 500...)
+			console.log("👉 RESPUESTA DEL SERVIDOR - STATUS:", response.status);
 	
-			if(response.status===200){
+			if (response.status === 200) {
+				console.log("➡️ Entrando en el camino del ÉXITO (200)");
 				const responseData = await response.json();
 				sessionStorage.setItem("token", responseData.token);
-				console.log(responseData.message);
-				console.log(responseData.token);
-				console.log("Login de usuario correcto" )
+				
+				// Forzamos al frontend a enterarse inmediatamente
+				if (typeof setUserLogin === "function") {
+					setUserLogin(true); 
+				}
+
 				swal({
 					title: "Login correcto!!!",
 					text: "Pulse OK para continuar....",
 					icon: "success",
 				})
 				.then(ok => {
-					//if (ok) {document.location.href = '/'};
 					if (ok) navigate('/');
-					
 				});
 				
-			} else if (response.status === 400 || 401){	
-				console.log("Login de usuario incorrecto")
+			} else if (response.status === 400 || response.status === 401) {	
+				console.log("➡️ Entrando en el camino del ERROR DE CREDENCIALES (400/401)");
 				swal({
 					title: "Login incorrecto!!!",
 					text: "Pulse Aceptar para reintentar o crear una cuenta....",
@@ -90,28 +93,27 @@ export default function Login() {
 					button: "Aceptar"
 				})
 				.then(ok => {
-					//if (ok) {document.location.href = '/login'};
-					setLogin(blankLogin)
+					setLogin(blankLogin);
 					if (ok) navigate('/login');
-					
 				});
 			} else {
-				console.log("Error gravísiiimo de sabe D10S que...!!!")
+				console.log("➡️ Entrando en el camino del ERROR GENERAL (Otros estados)");
 				swal({
 					title: "ERROR !!!",
 					text: "Ha ocurrido un fallo general, intentelo mas tarde.",
 					icon: "error",
-				})
+				});
 			}
-		}catch (err){
-			console.log("Error gravísiiimo de sabe D10S que...!!!")
-				swal({
-					title: "ERROR !!!",
-					text: "Ha ocurrido un fallo general, intentelo mas tarde.",
-					icon: "error",
-				})
+		} catch (err) {
+			console.error("➡️ ERROR GRAVE CAPTURADO EN EL CATCH:", err);
+			swal({
+				title: "ERROR !!!",
+				text: "Ha ocurrido un fallo general, intentelo mas tarde.",
+				icon: "error",
+			});
 		}			
 	}
+
    
     return (
         <>

@@ -85,3 +85,25 @@ a {
 .swal-footer {
     text-align: center;
 }
+
+/* --- NUEVOS ESTILOS PARA EL PANEL DE MANTENIMIENTO --- */
+.maintenancePanel {
+    display: flex;
+    gap: 15px;
+    margin-right: 15px;
+    align-items: center;
+}
+
+.maintenanceIcon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.maintenanceIcon:hover {
+    transform: scale(1.2); /* Hace el icono un pelín más grande al pasar el ratón */
+}
+
+.iconBackup { color: #2ecc71; }  /* Verde */
+.iconRestore { color: #f39c12; } /* Naranja */
+.iconShutdown { color: #e74c3c; }/* Rojo */

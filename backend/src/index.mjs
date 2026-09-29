@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import { config } from "dotenv"
 import { getOneNewsController, getAllNewsController, postNewsController, putNewsController, deleteNewsController } from "./controllers/newsController.mjs";
 import { userRegisterController, userLoginController, getAllUsersController, deleteUserController } from "./controllers/usersController.mjs";
@@ -11,6 +12,8 @@ const PATH_PREFIX = "/api/v0.0"
 if ( process.env.NODE_ENV != "production" ) config()
 
 const app = express();
+app.use(cors());
+
 
 const uploader = multer({dest: './imgs'})
 

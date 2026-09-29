@@ -70,37 +70,25 @@ export function userRegisterController (request, response) {
                                 console.log(`Algo ha funcionado mal...`, err);
                                 response.status(500).send(`<b>Algo ha funcionado mal:<br>${err}</b>`);
                                     } else if (data){
+                                        console.log (data.password);
+                                        console.log(data.name);
+                                        console.log (password);
                                         const pass = bcrypt.compareSync(password, data.password);
                                         if(pass===true) {
                                             console.log("Login de usuario correcto");
-                                            
-                                            // 1. Comprobamos si es tu correo de administrador
-                                            let userRole = 'user';
-                                            if (data.email === 'admin@blogdeviajes.com') {
-                                                userRole = 'admin';
-                                            }
-
-                                            // 2. Creamos el token metiendo el rol dentro
                                             const token = jwt.sign(
-                                                { 
-                                                    name: data.name,
-                                                    email: data.email,
-                                                    role: userRole 
-                                                },
+                                                {name: data.name},
                                                 process.env.TOKEN_KEY,
                                                 {
                                                   expiresIn: "2h",
                                                 }
                                               );
-                                              
-                                        console.log(`Token generado para el rol: ${userRole}`);
-                                        
-                                        // 3. Enviamos el token y el rol de vuelta a la web
+                                        console.log (token);
                                         response.status(200).json({
                                             message: `<b>Login de usuario correcto.</b>`,
-                                            token: token,
-                                            role: userRole 
+                                            token: token
                                         });
+                                        //response.status(200).send(`<b>Solicitud Aceptada<br><br>Login de usuario correcto.</b>`);
 
                                         } else{
                                             console.log("Password incorrecto");
@@ -113,8 +101,6 @@ export function userRegisterController (request, response) {
         }
     )
 }
-
-
 
 /**
  * Controlador para listar todos los usuarios.

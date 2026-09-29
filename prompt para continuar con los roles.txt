@@ -1,0 +1,76 @@
+¡Hola! Vamos a continuar con el proyecto del blog de viajes en React y Node/Express. Ayer logramos configurar el login para el administrador (admin@blogdeviajes.com), corregimos los problemas visuales del login y del Navbar en React, y los tres iconos de mantenimiento (Backup, Restore y Apagado) ya aparecen de forma exclusiva para el rol de administrador.Nos quedamos en un punto crítico: al pulsar el icono rojo de Apagar Servidor, el Frontend hace la petición correctamente pero devuelve un error 404 (Not Found). Esto ocurre porque nos falta registrar las rutas de mantenimiento en el archivo principal del Backend (backend/src/index.mjs).Mi archivo backend/src/controllers/maintenanceController.mjs ya tiene creadas las funciones shutdownController, backupController y restoreController.Por favor, guíame paso a paso (yendo despacio y de uno en uno) para modificar mi archivo principal index.mjs del backend, importar la función isAdmin de mi authMiddleware.mjs, traer los controladores de mantenimiento y registrar el endpoint /maintenance/shutdown para solucionar de una vez el error 404.
+-----------------------------------------------------------------------------------------------------------------
+Hola. Vamos a continuar con el proyecto del blog de viajes en React y Node/Express que revivimos ayer. El estado actual es el siguiente:
+
+1. El frontend (puerto 3000) y el backend (puerto 4000 con SQLite) ya arrancan y comunican perfectamente de forma local.
+2. Añadimos la librería 'cors' en el index.mjs del backend para solucionar los bloqueos de red de forma nativa.
+3. Ya creamos los scripts .bat en el escritorio para arrancar, respaldar y restaurar de forma externa.
+
+El objetivo de hoy es implementar operaciones de mantenimiento mediante iconos dentro de la propia web para el rol de Administrador. Acordamos estructurarlo así:
+- Nivel Físico: Se sigue encendiendo el servidor desde el ordenador con el .bat.
+- Nivel Web (Roles): Solo el usuario 'admin' podrá ver y pulsar los iconos de Copia de seguridad, Restauración y Apagado del sistema remoto (/maintenance/shutdown) en la web.
+
+Nos quedamos en el Paso 2: Configurar los roles en el backend. Te comparto a continuación el código de mi archivo principal "backend/src/middleware/authMiddleware.mjs" para que me guíes paso a paso sobre cómo modificarlo para extraer el rol del administrador.
+
+
+--------------------------------------------------------------------------------------
+Hola. Vamos a continuar con el proyecto del blog de viajes en React y Node/Express. El estado actual es:
+
+1. El frontend (3000) y el backend (4000) comunican perfectamente con 'cors' nativo.
+2. Los scripts .bat externos (incluido el de apagado hecho a mano) funcionan al 100%.
+
+Objetivos de hoy:
+- Configurar Roles en el backend: Modificar "backend/src/middleware/authMiddleware.mjs" para que solo el usuario 'admin' tenga acceso a las tareas de mantenimiento.
+- Crear los iconos de administración en la interfaz visual de React (Backup, Restaurar y Apagar servidor).
+- Integrar avisos con SweetAlert: Hacer que al ejecutar las tareas de mantenimiento salte un banner animado de confirmación de éxito o error, usando la misma estética del resto de la web.
+
+Te comparto el código de mi "authMiddleware.mjs" para empezar...
+
+---------------------------------------------------------------------------------------------
+Hola. Vamos a continuar con el proyecto del blog de viajes en React y Node/Express. El estado actual es:
+
+1. El frontend (3000) y el backend (4000) comunican perfectamente con 'cors' nativo.
+2. Los scripts .bat externos (arranque, respaldo, restauración y el de apagado hecho a mano) funcionan al 100%.
+
+Objetivos de hoy:
+- Inicialización (Alta del primer Admin): Modificar el backend para que, si la base de datos empieza desde cero y vacía, cree automáticamente un usuario administrador por defecto (admin/admin1234).
+- Configurar Roles en el backend: Modificar "backend/src/middleware/authMiddleware.mjs" para que solo el usuario con rol 'admin' tenga acceso a las rutas de mantenimiento (/maintenance/backup, /maintenance/shutdown).
+- Crear los iconos de administración en la interfaz de React (Backup, Restaurar y Apagar servidor).
+- Integrar avisos con SweetAlert: Hacer que al ejecutar las tareas de mantenimiento salte un banner animado de confirmación de éxito o error.
+
+Te comparto el código de mi "authMiddleware.mjs" para empezar...
+
+----------------------------------------------------------------------------
+Hola. Vamos a continuar con el desarrollo del proyecto de fin de ciclo de DAW (Blog de viajes en React con arquitectura .jsx + Node con módulos .mjs + SQLite). Tras auditar el código, la estructura está modularizada en 2 vistas y 9 componentes en el frontend, y controladores separados en el backend, aunque las consultas SQL se realizan actualmente dentro de los mismos controladores.
+
+Objetivos de hoy para la entrega de DAW:
+1. Inicialización de la BD: Modificar el backend para que, si arranca vacío, cree automáticamente el primer usuario 'admin' (admin/admin1234).
+2. Seguridad por Roles (Auth): Modificar "backend/src/middleware/authMiddleware.mjs" para que el token JWT verifique el rol 'admin' e impida accesos no autorizados a rutas críticas.
+3. Endpoints de Mantenimiento y Refactor: Preparar las rutas de Backup, Restauración y Apagado (/maintenance/shutdown), aislando la lógica de consultas de los controladores.
+4. Interfaz y UX: Diseñar los iconos de mantenimiento en el Frontend e integrarlos con avisos animados de SweetAlert.
+
+Te comparto el código de mi "authMiddleware.mjs" para empezar a meter el sistema de roles...
+
+-----------------------------------------------------------------------------------
+
+Hola. Vamos a continuar con el desarrollo del proyecto de fin de ciclo de DAW (Blog de viajes en React .jsx + Node .mjs + SQLite). Además de avanzar con el código, aplicaremos el plan de repaso didáctico para preparar la defensa ante el tribunal, comentando las líneas e identificando la utilidad de cada librería.
+
+Objetivos de hoy:
+1. Inicialización de la BD: Modificar el backend para que, si arranca vacío, cree automáticamente el primer usuario 'admin' (admin/admin1234).
+2. Seguridad por Roles (Auth): Modificar "backend/src/middleware/authMiddleware.mjs" para extraer y verificar el rol 'admin' con JWT.
+3. Repaso Técnico: Traducir qué hace exactamente este middleware de autenticación y cómo justifica el control de accesos en la memoria de DAW.
+
+Te comparto el código de mi "authMiddleware.mjs" para empezar...
+
+----------------------------------------------------------------------------------------------
+
+Hola. Vamos a continuar con el desarrollo de mi proyecto de fin de ciclo de DAW (Blog de viajes en React .jsx + Node .mjs + SQLite). Además de avanzar con el código, aplicaremos el plan de repaso didáctico para la defensa (entender librerías y líneas) y prepararemos la guía de Git/GitHub para clonar y desplegar el proyecto desde cero en el laboratorio del tribunal.
+
+Objetivos de hoy:
+1. Inicialización de la BD: Modificar el backend para que, si arranca vacío, cree automáticamente el primer usuario 'admin' (admin/admin1234).
+2. Seguridad por Roles (Auth): Modificar "backend/src/middleware/authMiddleware.mjs" para verificar el rol 'admin' con JWT.
+3. Explicación Didáctica: Traducir qué hace este middleware de autenticación y qué dependencias clave del package.json intervienen aquí.
+
+Te comparto el código de mi "authMiddleware.mjs" para empezar...
+
+
