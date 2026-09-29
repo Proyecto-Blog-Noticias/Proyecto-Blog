@@ -54,8 +54,8 @@ try {
     
    
 
-    app.listen(process.env.PORT,()=>{
-        console.log(`Servidor Express funcionando en puerto ${process.env.PORT}`);
+    app.listen(process.env.PORT || 4000,()=>{
+        console.log(`Servidor Express funcionando en puerto ${process.env.PORT || 4000}`);
     });
 
 } catch {
